@@ -16,7 +16,7 @@ const binary_tree_t *find_parent(const binary_tree_t *first,
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 				     const binary_tree_t *second)
 {
-	int left_depth, right_depth, deficit;
+	int i, left_depth, right_depth, deficit;
 	binary_tree_t *ancestor;
 
 	if (first == NULL || second == NULL)
@@ -32,14 +32,14 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	{
 		deficit = right_depth - left_depth;
 
-		for (int i = 0; i < deficit; i++)
+		for (i = 0; i < deficit; i++)
 			second = second->parent;
 	}
 	else if (left_depth > right_depth)
 	{
 		deficit = left_depth - right_depth;
 
-		for (int i = 0; i < deficit; i++)
+		for (i = 0; i < deficit; i++)
 			first = first->parent;
 	}
 
