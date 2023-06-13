@@ -1,6 +1,5 @@
 #include "binary_trees.h"
 
-/* Function prototypes */
 int find_depth(const binary_tree_t *tree);
 const binary_tree_t *find_parent(const binary_tree_t *first,
 				 const binary_tree_t *second);
