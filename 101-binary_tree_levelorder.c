@@ -16,17 +16,17 @@ int is_leaf(const binary_tree_t *);
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-    int i, max_height;
+	int i, max_height;
 
-    if (tree == NULL)
-        return;
+	if (tree == NULL || func == NULL)
+		return;
 
-    max_height = get_node_height(tree);
+	max_height = get_node_height(tree);
 
-    for (i = 1; i <= max_height; i++)
-    {
-        call_handler(i, tree, func);
-    }
+	for (i = 1; i <= max_height; i++)
+	{
+		call_handler(i, tree, func);
+	}
 }
 
 /**
@@ -37,10 +37,10 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
  */
 int is_leaf(const binary_tree_t *tree)
 {
-    if (tree->left == NULL && tree->right == NULL)
-        return (1);
-    else
-        return (0);
+	if (tree->left == NULL && tree->right == NULL)
+		return (1);
+	else
+		return (0);
 }
 
 /**
@@ -51,15 +51,15 @@ int is_leaf(const binary_tree_t *tree)
  */
 int get_node_height(const binary_tree_t *tree)
 {
-    int l, r;
+	int l, r;
 
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    l = get_node_height(tree->left);
-    r = get_node_height(tree->right);
+	l = get_node_height(tree->left);
+	r = get_node_height(tree->right);
 
-    return (l > r ? l + 1 : r + 1);
+	return (l > r ? l + 1 : r + 1);
 }
 
 /**
@@ -70,14 +70,14 @@ int get_node_height(const binary_tree_t *tree)
  */
 int get_depth(const binary_tree_t *tree)
 {
-    int depth;
+	int depth;
 
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    depth = get_depth(tree->parent);
+	depth = get_depth(tree->parent);
 
-    return (depth + 1);
+	return (depth + 1);
 }
 
 /**
@@ -91,12 +91,12 @@ int get_depth(const binary_tree_t *tree)
  */
 void call_handler(int level, const binary_tree_t *tree, void (*func)(int))
 {
-    if (tree == NULL)
-        return;
+	if (tree == NULL)
+		return;
 
-    if (get_depth(tree) == level)
-        func(tree->n);
+	if (get_depth(tree) == level)
+		func(tree->n);
 
-    call_handler(level, tree->left, func);
-    call_handler(level, tree->right, func);
+	call_handler(level, tree->left, func);
+	call_handler(level, tree->right, func);
 }
